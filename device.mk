@@ -149,6 +149,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     debug.sf.disable_backpressure=1
 
 PRODUCT_VENDOR_PROPERTIES += \
+    debug.sf.disable_client_composition_cache=1 \
     debug.sf.layer_caching_active_layer_timeout_ms=1000 \
     debug.sf.treat_170m_as_sRGB=1 \
     ro.vendor.display.sensortype=2 \
