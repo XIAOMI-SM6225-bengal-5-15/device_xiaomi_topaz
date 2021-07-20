@@ -149,6 +149,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     debug.sf.disable_backpressure=1
 
 PRODUCT_VENDOR_PROPERTIES += \
+    debug.sf.layer_caching_active_layer_timeout_ms=1000 \
     ro.vendor.display.sensortype=2 \
     ro.vendor.display.svi=1 \
     vendor.display.idle_time=0 \
