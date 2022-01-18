@@ -1,3 +1,6 @@
+# the DIAG device node is not world writable/readable.
+/dev/diag                 0666   system     oem_2901
+
 # FPC fingerprint
 /sys/bus/platform/devices/soc:fingerprint_fpc* irq              0700  system system
 /sys/bus/platform/devices/soc:fingerprint_fpc* irq_enable       0700  system system
