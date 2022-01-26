@@ -18,3 +18,6 @@ on property:vendor.post_boot.parsed=1
     # configure governor settings for gold cluster
     write /sys/devices/system/cpu/cpufreq/policy4/walt/up_rate_limit_us 500
     write /sys/devices/system/cpu/cpufreq/policy4/walt/down_rate_limit_us 10000
+
+    # Configure uclamp
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
