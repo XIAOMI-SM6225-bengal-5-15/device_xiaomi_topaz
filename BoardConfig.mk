@@ -29,6 +29,7 @@ SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
 TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
+TARGET_SIGNONLY_BOOTLOADER := true
 
 BOARD_PRESIL_BUILD := true
 -include $(QCPATH)/common/bengal/BoardConfigVendor.mk

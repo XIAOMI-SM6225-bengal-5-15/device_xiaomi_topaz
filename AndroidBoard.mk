@@ -16,15 +16,48 @@ TARGET_HOST_LD_OVERRIDE := $(TARGET_HOST_COMPILER_PREFIX_OVERRIDE)ld
 # Compile (L)ittle (K)ernel bootloader and the nandwrite utility
 #----------------------------------------------------------------------
 ifneq ($(strip $(TARGET_NO_BOOTLOADER)),true)
+ifneq ($(strip $(TARGET_SIGNONLY_BOOTLOADER)),true)
 
 # Compile
 include bootable/bootloader/edk2/AndroidBoot.mk
 
 $(INSTALLED_BOOTLOADER_MODULE): $(TARGET_EMMC_BOOTLOADER) | $(ACP)
-	$(transform-prebuilt-to-target)
+else
+TARGET_EMMC_BOOTLOADER := $(TARGET_BOARD_UNSIGNED_ABL_DIR)/unsigned_abl.elf
+SIGN_ABL := $(PRODUCT_OUT)/abl.elf
+
+SECIMAGE_BASE := vendor/qcom/proprietary/sectools
+SECTOOLS_SECURITY_PROFILE := $(SECIMAGE_BASE)/config/integration/secimagev3.xml
+SIGN_ID := abl
+INSTALL_FILE_NAME := abl.elf
+
+define sec-image-generate
+        echo "Generating signed appsbl using secimage v1 tool"
+        rm -rf $(PRODUCT_OUT)/signed
+        rm -rf $(PRODUCT_OUT)/signed_ecc
+        SECIMAGE_LOCAL_DIR=$(SECIMAGE_BASE) USES_SEC_POLICY_MULTIPLE_DEFAULT_SIGN=$(USES_SEC_POLICY_MULTIPLE_DEFAULT_SIGN) \
+        USES_SEC_POLICY_DEFAULT_SUBFOLDER_SIGN=$(USES_SEC_POLICY_DEFAULT_SUBFOLDER_SIGN) \
+        USES_SEC_POLICY_INTEGRITY_CHECK=$(USES_SEC_POLICY_INTEGRITY_CHECK) python $(SECIMAGE_BASE)/sectools_builder.py \
+                -i $(TARGET_EMMC_BOOTLOADER) \
+                -t $(PRODUCT_OUT)/signed \
+                -g $(SIGN_ID) \
+                --config=$(SECTOOLS_SECURITY_PROFILE) \
+                --install_file_name=$(INSTALL_FILE_NAME) \
+                --install_base_dir=$(PRODUCT_OUT) \
+                > $(PRODUCT_OUT)/secimage.log 2>&1
+        echo "Completed secimage v1 signed appsbl (ABL) (logs in $(PRODUCT_OUT)/secimage.log)"
+endef
+
+$(SIGN_ABL): $(TARGET_EMMC_BOOTLOADER)
+        $(call sec-image-generate)
+$(INSTALLED_BOOTLOADER_MODULE): $(SIGN_ABL) | $(ACP)
+endif
+
+#   $(transform-prebuilt-to-target)
 $(BUILT_TARGET_FILES_PACKAGE): $(INSTALLED_BOOTLOADER_MODULE)
 
 droidcore: $(INSTALLED_BOOTLOADER_MODULE)
+droidcore-unbundled: $(INSTALLED_BOOTLOADER_MODULE)
 endif
 
 #----------------------------------------------------------------------
