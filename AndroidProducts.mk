@@ -1,5 +1,5 @@
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/bengal.mk
+	$(LOCAL_DIR)/bengal_515.mk
 
 COMMON_LUNCH_CHOICES := \
-        bengal-userdebug
+        bengal_515-userdebug

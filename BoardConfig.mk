@@ -6,6 +6,7 @@
 BOARD_SYSTEMSDK_VERSIONS := $(SHIPPING_API_LEVEL)
 
 TARGET_BOARD_PLATFORM := bengal
+TARGET_BOARD_SUFFIX := _515
 TARGET_BOOTLOADER_BOARD_NAME := bengal
 
 TARGET_ARCH := arm64
@@ -73,10 +74,10 @@ ifeq ($(ENABLE_AB), true)
        BOARD_SUPER_PARTITION_SIZE := 8589934592
    endif
 
-   TARGET_RECOVERY_FSTAB := device/qcom/bengal/recovery_AB_dynamic_partition.fstab
+   TARGET_RECOVERY_FSTAB := device/qcom/bengal_515/recovery_AB_dynamic_partition.fstab
 else
    BOARD_SUPER_PARTITION_SIZE := 4294967296
-   TARGET_RECOVERY_FSTAB := device/qcom/bengal/recovery_non-AB_dynamic_partition.fstab
+   TARGET_RECOVERY_FSTAB := device/qcom/bengal_515/recovery_non-AB_dynamic_partition.fstab
 endif
 ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
    # Enable DTBO for recovery image

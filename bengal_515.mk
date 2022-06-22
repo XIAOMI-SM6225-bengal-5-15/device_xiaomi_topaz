@@ -122,8 +122,8 @@ PRODUCT_PROPERTY_OVERRIDES  += \
      dalvik.vm.heapminfree=512k \
      dalvik.vm.heapmaxfree=8m
 # Target naming
-PRODUCT_NAME := bengal
-PRODUCT_DEVICE := bengal
+PRODUCT_NAME := bengal_515
+PRODUCT_DEVICE := bengal_515
 PRODUCT_BRAND := qti
 PRODUCT_MODEL := Bengal for arm64
 
@@ -184,9 +184,9 @@ PRODUCT_PACKAGES += \
   update_engine_sideload
 
 endif
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/bengal/framework_manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/bengal_515/framework_manifest.xml
 
-DEVICE_MANIFEST_FILE := device/qcom/bengal/manifest.xml
+DEVICE_MANIFEST_FILE := device/qcom/bengal_515/manifest.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
 # Kernel modules install path
