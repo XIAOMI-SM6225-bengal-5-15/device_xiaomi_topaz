@@ -1,3 +1,9 @@
+TARGET_BOARD_PLATFORM := bengal
+TARGET_BOARD_SUFFIX := _515
+
+ALLOW_MISSING_DEPENDENCIES := true
+RELAX_USES_LIBRARY_CHECK := true
+
 # Enable AVB 2.0
 BOARD_AVB_ENABLE := true
 
@@ -39,6 +45,7 @@ else
 PRODUCT_BUILD_CACHE_IMAGE := true
 endif
 PRODUCT_BUILD_RAMDISK_IMAGE := true
+PRODUCT_BUILD_RECOVERY_IMAGE := true
 PRODUCT_BUILD_USERDATA_IMAGE := true
 
 TARGET_SKIP_OTA_PACKAGE := true
@@ -88,7 +95,6 @@ BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
-$(call inherit-product, build/make/target/product/gsi_keys.mk)
 endif
 
 BOARD_HAVE_BLUETOOTH := false
@@ -138,6 +144,10 @@ TARGET_USES_QCOM_BSP := false
 TARGET_USES_RRO := true
 
 TARGET_DISABLE_DISPLAY := false
+
+NEED_AIDL_NDK_PLATFORM_BACKEND := true
+
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 ###########
 #QMAA flags starts
@@ -208,12 +218,29 @@ endif
 ###########
 #QMAA flags ends
 
-# Kernel configurations
-TARGET_KERNEL_VERSION := 4.19
-#Enable llvm support for kernel
-KERNEL_LLVM_SUPPORT := true
-#Enable sd-llvm support for kernel
-KERNEL_SD_LLVM_SUPPORT := true
+CLEAN_UP_JAVA_IN_VENDOR := warning
+
+JAVA_IN_VENDOR_SOONG_WHITE_LIST :=\
+CuttlefishService\
+pasrservice\
+QFingerprintService\
+QFPCalibration\
+VendorPrivAppPermissionTest\
+
+JAVA_IN_VENDOR_MAKE_WHITE_LIST :=\
+AEye\
+FDA\
+SnapdragonCamera\
+
+# Set kernel version and ion flags
+TARGET_KERNEL_VERSION := 5.15
+TARGET_USES_NEW_ION := true
+
+# Disable DLKM generation until build support is available
+TARGET_KERNEL_DLKM_DISABLE := false
+
+#Suppot to compile recovery without msm headers
+TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 
 ###########
 # Target configurations
@@ -242,9 +269,9 @@ ifeq ($(ENABLE_AB), true)
 PRODUCT_PACKAGES += update_engine \
     update_engine_client \
     update_verifier \
-    android.hardware.boot@1.1-impl-qti \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service
+    android.hardware.boot@1.2-impl-qti \
+    android.hardware.boot@1.2-impl-qti.recovery \
+    android.hardware.boot@1.2-service
 
 PRODUCT_HOST_PACKAGES += \
     brillo_update_payload
@@ -259,6 +286,9 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/bengal_515/framework_manifest.xml
 
 DEVICE_MANIFEST_FILE := device/qcom/bengal_515/manifest.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
+
+# Enable compilation of image_generation_tool
+TARGET_USES_IMAGE_GEN_TOOL := true
 
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
