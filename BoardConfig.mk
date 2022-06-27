@@ -215,7 +215,15 @@ PMIC_QG_SUPPORT := true
 # wlan specific
 #----------------------------------------------------------------------
 ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
+ifeq ($(TARGET_USES_QMAA), true)
+ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
+include device/qcom/wlan/default/BoardConfigWlan.mk
+else
 include device/qcom/wlan/bengal/BoardConfigWlan.mk
+endif
+else
+include device/qcom/wlan/bengal/BoardConfigWlan.mk
+endif
 endif
 
 # KEYSTONE(If43215c7f384f24e7adeeabdbbb1790f174b2ec1,b/147756744)

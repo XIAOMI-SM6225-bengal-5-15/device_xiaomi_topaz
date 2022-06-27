@@ -139,6 +139,75 @@ TARGET_USES_RRO := true
 
 TARGET_DISABLE_DISPLAY := false
 
+###########
+#QMAA flags starts
+###########
+#QMAA global flag for modular architecture
+#true means QMAA is enabled for system
+#false means QMAA is disabled for system
+
+TARGET_USES_QMAA := true
+
+#QMAA flag which is set to incorporate any generic dependencies
+#required for the boot to UI flow in a QMAA enabled target.
+#Set to false when all target level depenencies are met with
+#actual full blown implementations.
+TARGET_USES_QMAA_RECOMMENDED_BOOT_CONFIG := true
+
+#QMAA tech team flag to override global QMAA per tech team
+#true means overriding global QMAA for this tech area
+#false means using global, no override
+TARGET_USES_QMAA_OVERRIDE_RPMB := false
+TARGET_USES_QMAA_OVERRIDE_DISPLAY := false
+TARGET_USES_QMAA_OVERRIDE_AUDIO   := false
+TARGET_USES_QMAA_OVERRIDE_VIDEO   := false
+TARGET_USES_QMAA_OVERRIDE_CAMERA  := false
+TARGET_USES_QMAA_OVERRIDE_GFX     := false
+TARGET_USES_QMAA_OVERRIDE_WFD     := false
+TARGET_USES_QMAA_OVERRIDE_GPS     := false
+TARGET_USES_QMAA_OVERRIDE_ANDROID_RECOVERY := true
+TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE := true
+TARGET_USES_QMAA_OVERRIDE_WLAN    := false
+TARGET_USES_QMAA_OVERRIDE_DPM  := false
+TARGET_USES_QMAA_OVERRIDE_BLUETOOTH   := false
+TARGET_USES_QMAA_OVERRIDE_FM  := false
+TARGET_USES_QMAA_OVERRIDE_CVP  := true
+TARGET_USES_QMAA_OVERRIDE_FASTCV  := true
+TARGET_USES_QMAA_OVERRIDE_SCVE  := true
+TARGET_USES_QMAA_OVERRIDE_OPENVX  := true
+TARGET_USES_QMAA_OVERRIDE_DIAG := false
+TARGET_USES_QMAA_OVERRIDE_FTM := false
+TARGET_USES_QMAA_OVERRIDE_DATA := false
+TARGET_USES_QMAA_OVERRIDE_DATA_NET := true
+TARGET_USES_QMAA_OVERRIDE_KERNEL_TESTS_INTERNAL := false
+TARGET_USES_QMAA_OVERRIDE_MSMIRQBALANCE := true
+TARGET_USES_QMAA_OVERRIDE_VIBRATOR := false
+TARGET_USES_QMAA_OVERRIDE_DRM     := false
+TARGET_USES_QMAA_OVERRIDE_KMGK := false
+TARGET_USES_QMAA_OVERRIDE_VPP := false
+TARGET_USES_QMAA_OVERRIDE_GP := false
+TARGET_USES_QMAA_OVERRIDE_BIOMETRICS := true
+TARGET_USES_QMAA_OVERRIDE_SPCOM_UTEST := false
+TARGET_USES_QMAA_OVERRIDE_PERF := true
+TARGET_USES_QMAA_OVERRIDE_SENSORS := false
+TARGET_USES_QMAA_OVERRIDE_SYNX := false
+TARGET_USES_QMAA_OVERRIDE_SECUREMSM_TESTS := false
+TARGET_USES_QMAA_OVERRIDE_SOTER := false
+TARGET_USES_QMAA_OVERRIDE_REMOTE_EFS := false
+TARGET_USES_QMAA_OVERRIDE_TFTP := false
+TARGET_USES_QMAA_OVERRIDE_EID := false
+
+#Full QMAA HAL List
+QMAA_HAL_LIST := audio video camera display sensors gps
+
+ifeq ($(TARGET_USES_QMAA), true)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.confqmaa=true
+endif
+
+###########
+#QMAA flags ends
+
 # Kernel configurations
 TARGET_KERNEL_VERSION := 4.19
 #Enable llvm support for kernel
@@ -245,7 +314,15 @@ PRODUCT_PACKAGES += android.hardware.lights-service.qti
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
+ifeq ($(TARGET_USES_QMAA), true)
+ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
+include device/qcom/wlan/default/wlan.mk
+else
 include device/qcom/wlan/bengal/wlan.mk
+endif
+else
+include device/qcom/wlan/bengal/wlan.mk
+endif
 
 ###################################################################################
 # This is the End of target.mk file.
