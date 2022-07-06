@@ -1,7 +1,5 @@
 LOCAL_PATH := $(call my-dir)
 
-SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
-
 #----------------------------------------------------------------------
 # Host compiler configs
 #----------------------------------------------------------------------
@@ -49,7 +47,7 @@ define sec-image-generate
 endef
 
 $(SIGN_ABL): $(TARGET_EMMC_BOOTLOADER)
-        $(call sec-image-generate)
+	$(call sec-image-generate)
 $(INSTALLED_BOOTLOADER_MODULE): $(SIGN_ABL) | $(ACP)
 endif
 
