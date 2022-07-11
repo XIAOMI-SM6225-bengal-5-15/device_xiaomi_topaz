@@ -135,7 +135,14 @@ BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x4a90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7
+# Use sha256 hash algorithm for system_dlkm partition
+BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=qcom_geni,0x4a90000 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 bootconfig androidboot.selinux=permissive printk.devkmsg=on
+
+BOARD_BOOTCONFIG += androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1
 
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
@@ -225,9 +232,6 @@ SOONG_CONFIG_perf_ioctl := true
 
 BUILD_BROKEN_DUP_RULES := true
 #BUILD_BROKEN_PHONY_TARGETS := true
-
-# Enable QG user space
-PMIC_QG_SUPPORT := true
 
 #----------------------------------------------------------------------
 # wlan specific

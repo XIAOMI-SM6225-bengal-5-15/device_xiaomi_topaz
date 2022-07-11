@@ -84,11 +84,11 @@ POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
 FILESYSTEM_TYPE_vendor=ext4 \
 POSTINSTALL_OPTIONAL_vendor=true
 # Userdata checkpoint end
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/default/fstab_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.default
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.emmc
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/default/fstab_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.default
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.emmc
 else
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/default/fstab_non_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.default
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab_non_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.emmc
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/default/fstab_non_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.default
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab_non_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/first_stage_ramdisk/fstab.emmc
 endif
 BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
@@ -169,12 +169,12 @@ TARGET_USES_QMAA_RECOMMENDED_BOOT_CONFIG := true
 #true means overriding global QMAA for this tech area
 #false means using global, no override
 TARGET_USES_QMAA_OVERRIDE_RPMB := false
-TARGET_USES_QMAA_OVERRIDE_DISPLAY := false
+TARGET_USES_QMAA_OVERRIDE_DISPLAY := true
 # Set to true
 TARGET_USES_QMAA_OVERRIDE_AUDIO   := true
 TARGET_USES_QMAA_OVERRIDE_VIDEO   := false
 TARGET_USES_QMAA_OVERRIDE_CAMERA  := false
-TARGET_USES_QMAA_OVERRIDE_GFX     := false
+TARGET_USES_QMAA_OVERRIDE_GFX     := true
 TARGET_USES_QMAA_OVERRIDE_WFD     := false
 TARGET_USES_QMAA_OVERRIDE_GPS     := false
 TARGET_USES_QMAA_OVERRIDE_ANDROID_RECOVERY := true
@@ -239,22 +239,7 @@ TARGET_KERNEL_VERSION := 5.15
 TARGET_USES_NEW_ION := true
 
 # Disable DLKM generation until build support is available
-TARGET_KERNEL_DLKM_DISABLE := true
-
-# Tech specific flags
-TARGET_KERNEL_DLKM_AUDIO_OVERRIDE := false
-TARGET_KERNEL_DLKM_BT_OVERRIDE := false
-TARGET_KERNEL_DLKM_CAMERA_OVERRIDE := false
-TARGET_KERNEL_DLKM_NFC_OVERRIDE := false
-TARGET_KERNEL_DLKM_DATA_OVERRIDE := false
-TARGET_KERNEL_DLKM_DISPLAY_OVERRIDE := false
-TARGET_KERNEL_DLKM_MM_DRV_OVERRIDE := false
-TARGET_KERNEL_DLKM_SECURE_MSM_OVERRIDE := false
-TARGET_KERNEL_DLKM_THERMAL_OVERRIDE := false
-TARGET_KERNEL_DLKM_TOUCH_OVERRIDE := false
-TARGET_KERNEL_DLKM_VIDEO_OVERRIDE := false
-TARGET_KERNEL_DLKM_WLAN_OVERRIDE := false
-TARGET_KERNEL_DLKM_MMRM_OVERRIDE := false
+TARGET_KERNEL_DLKM_DISABLE := false
 
 #Suppot to compile recovery without msm headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
