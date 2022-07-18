@@ -231,6 +231,7 @@ TARGET_USES_QMAA_OVERRIDE_REMOTE_EFS := false
 TARGET_USES_QMAA_OVERRIDE_TFTP := false
 TARGET_USES_QMAA_OVERRIDE_EID := false
 
+TARGET_ENABLE_QSEECOM := true
 #Full QMAA HAL List
 QMAA_HAL_LIST := audio video camera display sensors gps
 
