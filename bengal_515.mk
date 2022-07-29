@@ -149,6 +149,20 @@ TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
+# beluga settings
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.beluga.p=0x3 \
+    ro.vendor.beluga.c=0x4800 \
+    ro.vendor.beluga.s=0x900 \
+    ro.vendor.beluga.t=0x240
+
+# Below perf props should be part of vendor/build.prop
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=libqti-perfd-client.so \
+    ro.vendor.perf-hal.ver=2.3 \
+    ro.vendor.perf.scroll_opt=1 \
+    vendor.perf.framepacing.enable=1
+
 # RRO configuration
 TARGET_USES_RRO := true
 
