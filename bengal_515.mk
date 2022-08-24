@@ -22,11 +22,12 @@ SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
 # Enable Dynamic partition
 BOARD_DYNAMIC_PARTITION_ENABLE ?= true
 
-SHIPPING_API_LEVEL := 30
+SHIPPING_API_LEVEL := 33
 PRODUCT_SHIPPING_API_LEVEL := $(SHIPPING_API_LEVEL)
 
-BOARD_SHIPPING_API_LEVEL := 30
-BOARD_API_LEVEL := 30
+# Set GRF/Vendor freeze properties
+BOARD_SHIPPING_API_LEVEL := 33
+BOARD_API_LEVEL := 33
 
 # For QSSI builds, we should skip building the system image. Instead we build the
 # "non-system" images (that we support).
@@ -341,8 +342,40 @@ PRODUCT_COPY_FILES += \
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-BOARD_SYSTEMSDK_VERSIONS := 29
-BOARD_VNDK_VERSION := current
+BOARD_SYSTEMSDK_VERSIONS := 33
+
+ifeq (true,$(BUILDING_WITH_VSDK))
+    ALLOW_MISSING_DEPENDENCIES := true
+    TARGET_SKIP_CURRENT_VNDK := true
+
+    ifneq (,$(filter vendor,$(DISABLED_VSDK_SNAPSHOTS_LIST)))
+        # Vendor snapshot is disabled with VSDK
+        BOARD_VNDK_VERSION := current
+    else
+        BOARD_VNDK_VERSION := 33
+    endif
+
+    ifneq (,$(filter recovery,$(DISABLED_VSDK_SNAPSHOTS_LIST)))
+        # Recovery snapshot is disabled with VSDK
+        RECOVERY_SNAPSHOT_VERSION := current
+    else
+        RECOVERY_SNAPSHOT_VERSION := 33
+    endif
+
+    ifneq (,$(filter ramdisk,$(DISABLED_VSDK_SNAPSHOTS_LIST)))
+        # Ramdisk snapshot is disabled with VSDK
+        RAMDISK_SNAPSHOT_VERSION := current
+    else
+        RAMDISK_SNAPSHOT_VERSION := 33
+    endif
+else
+    BOARD_VNDK_VERSION := current
+    RECOVERY_SNAPSHOT_VERSION := current
+    RAMDISK_SNAPSHOT_VERSION := current
+endif
+
+$(warning "BOARD_VNDK_VERSION = $(BOARD_VNDK_VERSION), RECOVERY_SNAPSHOT_VERSION=$(RECOVERY_SNAPSHOT_VERSION), RAMDISK_SNAPSHOT_VERSION=$(RAMDISK_SNAPSHOT_VERSION)")
+
 TARGET_MOUNT_POINTS_SYMLINKS := false
 
 PRODUCT_BOOT_JARS += telephony-ext
