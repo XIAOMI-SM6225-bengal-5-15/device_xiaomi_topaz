@@ -10,9 +10,8 @@ BOARD_AVB_ENABLE := true
 # Enable Virtual A/B
 ENABLE_VIRTUAL_AB := true
 
-ifeq ($(ENABLE_VIRTUAL_AB), true)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-endif
+# Enable virtual A/B compression
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
 # Default A/B configuration
 ENABLE_AB ?= true
