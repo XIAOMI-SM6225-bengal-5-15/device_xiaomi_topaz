@@ -66,6 +66,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += fastbootd
 # Add default implementation of fastboot HAL.
 PRODUCT_PACKAGES += android.hardware.fastboot@1.0-impl-mock
+
+# diag-router
+TARGET_HAS_DIAG_ROUTER := true
+
 # f2fs utilities
 PRODUCT_PACKAGES += \
  sg_write_buffer \
@@ -95,6 +99,10 @@ BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
+endif
+
+ifneq ("$(wildcard device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist)", "")
+PRODUCT_COPY_FILES += device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 endif
 
 BOARD_HAVE_BLUETOOTH := false
@@ -140,6 +148,20 @@ PRODUCT_MODEL := Bengal for arm64
 TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
+
+# beluga settings
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.beluga.p=0x3 \
+    ro.vendor.beluga.c=0x4800 \
+    ro.vendor.beluga.s=0x900 \
+    ro.vendor.beluga.t=0x240
+
+# Below perf props should be part of vendor/build.prop
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=libqti-perfd-client.so \
+    ro.vendor.perf-hal.ver=2.3 \
+    ro.vendor.perf.scroll_opt=1 \
+    vendor.perf.framepacing.enable=1
 
 # RRO configuration
 TARGET_USES_RRO := true
@@ -209,6 +231,7 @@ TARGET_USES_QMAA_OVERRIDE_REMOTE_EFS := false
 TARGET_USES_QMAA_OVERRIDE_TFTP := false
 TARGET_USES_QMAA_OVERRIDE_EID := false
 
+TARGET_ENABLE_QSEECOM := true
 #Full QMAA HAL List
 QMAA_HAL_LIST := audio video camera display sensors gps
 
@@ -220,18 +243,16 @@ endif
 ###########
 #QMAA flags ends
 
-CLEAN_UP_JAVA_IN_VENDOR := warning
+CLEAN_UP_JAVA_IN_VENDOR ?= enforcing
 
 JAVA_IN_VENDOR_SOONG_WHITE_LIST :=\
 CuttlefishService\
 pasrservice\
-QFingerprintService\
-QFPCalibration\
 VendorPrivAppPermissionTest\
 
 JAVA_IN_VENDOR_MAKE_WHITE_LIST :=\
 AEye\
-FDA\
+AON\
 SnapdragonCamera\
 
 # Set kernel version and ion flags
