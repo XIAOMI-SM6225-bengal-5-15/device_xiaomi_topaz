@@ -202,7 +202,7 @@ TARGET_USES_QMAA_OVERRIDE_VIDEO   := true
 TARGET_USES_QMAA_OVERRIDE_CAMERA  := false
 TARGET_USES_QMAA_OVERRIDE_GFX     := true
 TARGET_USES_QMAA_OVERRIDE_WFD     := false
-TARGET_USES_QMAA_OVERRIDE_GPS     := false
+TARGET_USES_QMAA_OVERRIDE_GPS     := true
 TARGET_USES_QMAA_OVERRIDE_ANDROID_RECOVERY := true
 TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE := true
 TARGET_USES_QMAA_OVERRIDE_WLAN    := false
@@ -410,6 +410,13 @@ endif
 else
 include device/qcom/wlan/bengal/wlan.mk
 endif
+
+#------------------------
+# location specific
+#------------------------
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
+FEATURE_SLIM_AP := false
+FEATURE_GPS_LOC_QSH := false
 
 ###################################################################################
 # This is the End of target.mk file.
