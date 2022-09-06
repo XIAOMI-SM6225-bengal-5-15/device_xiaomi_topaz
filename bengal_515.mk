@@ -21,6 +21,11 @@ SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
 # Enable Dynamic partition
 BOARD_DYNAMIC_PARTITION_ENABLE ?= true
 
+# true: earlycon and console enabled
+# false: console explicitly disabled
+# <empty>: default from kernel
+TARGET_CONSOLE_ENABLED ?=
+
 SHIPPING_API_LEVEL := 33
 PRODUCT_SHIPPING_API_LEVEL := $(SHIPPING_API_LEVEL)
 
