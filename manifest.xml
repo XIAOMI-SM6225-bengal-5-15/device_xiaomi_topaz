@@ -587,6 +587,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
             <instance>default</instance>
         </interface>
     </hal>
+    <!-- Secure image data processor HAL Service -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.secureprocessor.device</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISecureProcessor</name>
+            <instance>qti-tee</instance>
+        </interface>
+    </hal>
     <!-- bluetooth -->
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
@@ -623,6 +633,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
             <name>IBTConfigStore</name>
             <instance>default</instance>
         </interface>
+    </hal>
+    <!-- Trusted UI HAL Service -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.trustedui</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.2::ITrustedUI/default</fqname>
+        <fqname>@1.1::ITrustedInput/default</fqname>
     </hal>
     <!-- BluetoothSar service-->
     <hal format="hidl">
