@@ -140,7 +140,7 @@ BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=qcom_geni,0x4a90000 qcom_geni_serial.con_enabled=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 bootconfig androidboot.selinux=permissive printk.devkmsg=on
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=qcom_geni,0x4a90000 qcom_geni_serial.con_enabled=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 bootconfig
 
 BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1
 
