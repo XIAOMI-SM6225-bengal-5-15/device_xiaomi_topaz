@@ -140,9 +140,9 @@ BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
-BOARD_KERNEL_CMDLINE := lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 bootconfig printk.devkmsg=on
+BOARD_KERNEL_CMDLINE := video=vfb:640x400,bpp=32,memsize=3072000
 
-BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.memcg=1
+BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.memcg=1 androidboot.load_modules_parallel=true
 
 # TARGET_CONSOLE_ENABLED allows to override the default kernel configuration
 # true  -- override kernel configuration to enable console
