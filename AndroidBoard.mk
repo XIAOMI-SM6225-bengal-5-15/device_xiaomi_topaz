@@ -39,6 +39,7 @@ define sec-image-generate
                 -i $(TARGET_EMMC_BOOTLOADER) \
                 -t $(PRODUCT_OUT)/signed \
                 -g $(SIGN_ID) \
+                --soc_vers=0x9007 \
                 --config=$(SECTOOLS_SECURITY_PROFILE) \
                 --install_file_name=$(INSTALL_FILE_NAME) \
                 --install_base_dir=$(PRODUCT_OUT) \
