@@ -150,6 +150,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 PRODUCT_VENDOR_PROPERTIES += \
     debug.sf.layer_caching_active_layer_timeout_ms=1000 \
+    debug.sf.treat_170m_as_sRGB=1 \
     ro.vendor.display.sensortype=2 \
     ro.vendor.display.svi=1 \
     vendor.display.idle_time=0 \
