@@ -389,6 +389,8 @@ PRODUCT_PACKAGES += telephony-ext
 
 PRODUCT_BOOT_JARS += tcmiface
 
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
+
 # Vendor property to enable advanced network scanning
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.enableadvancedscan=true
