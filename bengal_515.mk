@@ -30,7 +30,7 @@ SHIPPING_API_LEVEL := 33
 PRODUCT_SHIPPING_API_LEVEL := $(SHIPPING_API_LEVEL)
 
 # Set GRF/Vendor freeze properties
-BOARD_SHIPPING_API_LEVEL := 33
+BOARD_SHIPPING_API_LEVEL := 30
 BOARD_API_LEVEL := 33
 
 # For QSSI builds, we should skip building the system image. Instead we build the
