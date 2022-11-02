@@ -405,6 +405,9 @@ ro.crypto.allow_encrypt_override = true
 
 PRODUCT_PACKAGES += init.qti.dcvs.sh
 
+# Enable legacy QSEECom
+TARGET_ENABLE_QSEECOM := true
+
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------

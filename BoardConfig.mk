@@ -32,6 +32,7 @@ TARGET_USES_REMOTEPROC := true
 TARGET_NO_KERNEL := false
 TARGET_SIGNONLY_BOOTLOADER := true
 
+BOARD_RAMDISK_USE_LZ4 := true
 BOARD_PRESIL_BUILD := true
 -include $(QCPATH)/common/bengal/BoardConfigVendor.mk
 
