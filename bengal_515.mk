@@ -35,6 +35,8 @@ PRODUCT_SHIPPING_API_LEVEL := $(SHIPPING_API_LEVEL)
 BOARD_SHIPPING_API_LEVEL := 30
 BOARD_API_LEVEL := 33
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # For QSSI builds, we should skip building the system image. Instead we build the
 # "non-system" images (that we support).
 
