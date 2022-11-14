@@ -32,7 +32,7 @@ SHIPPING_API_LEVEL := 33
 PRODUCT_SHIPPING_API_LEVEL := $(SHIPPING_API_LEVEL)
 
 # Set GRF/Vendor freeze properties
-BOARD_SHIPPING_API_LEVEL := 30
+BOARD_SHIPPING_API_LEVEL := 33
 BOARD_API_LEVEL := 33
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
