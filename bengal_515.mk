@@ -408,7 +408,8 @@ ro.crypto.volume.filenames_mode = "aes-256-cts" \
 ro.crypto.allow_encrypt_override = true
 
 PRODUCT_PACKAGES += init.qti.dcvs.sh
-
+PRODUCT_PACKAGES += android.hardware.sensors@2.1-service.multihal
+PRODUCT_PACKAGES += android.hardware.sensors@2.1-service-multihal.rc
 # Enable legacy QSEECom
 TARGET_ENABLE_QSEECOM := true
 
