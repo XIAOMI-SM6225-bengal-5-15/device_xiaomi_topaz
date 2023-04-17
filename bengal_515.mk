@@ -246,6 +246,7 @@ TARGET_USES_QMAA_OVERRIDE_EID := false
 TARGET_USES_QMAA_OVERRIDE_USB := true
 
 TARGET_ENABLE_QSEECOM := true
+TARGET_ENABLE_SECUREMSM_FIRST_STAGE := true
 #Full QMAA HAL List
 QMAA_HAL_LIST := audio video camera display sensors gps
 
