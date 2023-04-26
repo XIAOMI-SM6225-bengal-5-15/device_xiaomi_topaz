@@ -33,6 +33,10 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
+# AAPT
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
 # APEX
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
@@ -63,6 +67,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Authsecret
 PRODUCT_PACKAGES += \
     android.hardware.authsecret@1.0.vendor
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_WIDTH := 1080
 
 # Bluetooth
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
