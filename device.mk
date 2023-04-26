@@ -185,6 +185,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss-V2-ndk.vendor
 
+# IDC
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/idc/,$(TARGET_COPY_OUT_VENDOR)/usr/idc)
+
 # Identity
 PRODUCT_PACKAGES += \
     android.hardware.identity-V3-ndk.vendor
@@ -195,6 +199,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Kernel
 KERNEL_PREBUILT_DIR := $(LOCAL_PATH)-kernel
+
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/keylayout/,$(TARGET_COPY_OUT_VENDOR)/usr/keylayout)
 
 # Keymaster
 PRODUCT_PACKAGES += \
