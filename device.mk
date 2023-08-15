@@ -1,5 +1,6 @@
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    hardware/xiaomi
 
 TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
@@ -51,6 +52,10 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.audio.voice.change.support=true \
     ro.vendor.audio.voice.change.version=2
 
+# Authsecret
+PRODUCT_PACKAGES += \
+    android.hardware.authsecret@1.0.vendor
+
 # Bluetooth
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.vendor.btstack.aac_frm_ctl.enabled=true \
@@ -70,6 +75,15 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.bluetooth.wipower=false
 
 # Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service_64 \
+    libcamera2ndk_vendor \
+    libdng_sdk.vendor \
+    libstdc++.vendor \
+    vendor.qti.hardware.camera.device@1.0.vendor \
+    vendor.qti.hardware.camera.postproc@1.0.vendor
+
 PRODUCT_VENDOR_PROPERTIES += \
     camera.disable_zsl_mode=1 \
     sys.haptic.ignoreWhenCamera=true
@@ -81,6 +95,10 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# Consumer IR AIDL
+PRODUCT_PACKAGES += \
+    android.hardware.ir-service.example
+
 # Crypto
 PRODUCT_VENDOR_PROPERTIES += \
     ro.crypto.volume.filenames_mode=aes-256-cts \
@@ -90,6 +108,13 @@ PRODUCT_VENDOR_PROPERTIES += \
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Display
+PRODUCT_PACKAGES += \
+    android.frameworks.displayservice@1.0.vendor \
+    android.hardware.graphics.common-V2-ndk.vendor \
+    vendor.qti.hardware.display.config-V2-ndk.vendor \
+    vendor.qti.hardware.display.config-V5-ndk.vendor \
+    vendor.qti.hardware.memtrack-service
+
 PRODUCT_PRODUCT_PROPERTIES += \
     debug.sf.disable_backpressure=1
 
@@ -111,6 +136,11 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.dpm.vndr.feature=1
 
 # DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.4.vendor \
+    android.hardware.drm-service.clearkey \
+    android.hardware.drm-service.widevine
+
 PRODUCT_VENDOR_PROPERTIES += \
     drm.service.enabled=true
 
@@ -120,6 +150,9 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # Fingerprint
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.3-service.xiaomi
+
 PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.fp.sideCap=true
 
@@ -131,6 +164,14 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.fuse.passthrough.enable=true
 
+# GPS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss-V2-ndk.vendor
+
+# Identity
+PRODUCT_PACKAGES += \
+    android.hardware.identity-V3-ndk.vendor
+
 # Incremental FS
 PRODUCT_VENDOR_PROPERTIES += \
     ro.incremental.enable=1
@@ -138,7 +179,26 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Kernel
 KERNEL_PREBUILT_DIR := $(LOCAL_PATH)-kernel
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0.vendor \
+    android.hardware.keymaster@4.1.vendor \
+    libkeymaster_messages.vendor
+
+# Keymint
+PRODUCT_PACKAGES += \
+    android.hardware.hardware_keystore.xml \
+    android.hardware.security.keymint-V1-ndk.vendor \
+    android.hardware.security.secureclock-V1-ndk.vendor \
+    android.hardware.security.sharedsecret-V1-ndk.vendor
+
 # Media
+PRODUCT_PACKAGES += \
+    libavservices_minijail_vendor \
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_soft_common.vendor \
+    libsfplugin_ccodec_utils.vendor
+
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     media.aac_51_output_enabled=true \
     media.stagefright.enable-aac=true \
@@ -156,6 +216,10 @@ NEED_AIDL_NDK_PLATFORM_BACKEND := true
 # Netmgr
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.data.netmgrd.qos.enable=true
+
+# Neural Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks-V1-ndk.vendor
 
 # NFC
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -200,7 +264,10 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.multihal
+    android.hardware.sensors@2.1-service.xiaomi-multihal \
+    android.hardware.sensors@2.0-ScopedWakelock.vendor \
+    android.frameworks.sensorservice@1.0.vendor \
+    libsensorndkbridge
 
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.sensors.debug.ssc_qmi_debug=true \
@@ -217,6 +284,9 @@ BOARD_SHIPPING_API_LEVEL := 33
 BOARD_API_LEVEL := 33
 
 # Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0-service.qti-v2
+
 PRODUCT_VENDOR_PROPERTIES += \
     vendor.sys.thermal.data.path=/data/vendor/thermal/
 
@@ -226,6 +296,11 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
+
+# TrustedUI
+PRODUCT_PACKAGES += \
+    android.hidl.memory.block@1.0.vendor \
+    vendor.qti.hardware.systemhelper@1.0.vendor
 
 # Wlan
 PRODUCT_VENDOR_PROPERTIES += \
