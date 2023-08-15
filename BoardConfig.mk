@@ -3,7 +3,7 @@
 # Product-specific compile-time definitions.
 #
 
-DEVICE_PATH := device/qcom/bengal_515
+DEVICE_PATH := device/xiaomi/topaz
 
 # Architecture
 TARGET_ARCH := arm64
@@ -31,6 +31,9 @@ AB_OTA_PARTITIONS += \
     vendor \
     vendor_boot \
     vendor_dlkm
+
+# Board Info
+TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := bengal
@@ -64,6 +67,9 @@ BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
     androidboot.usbcontroller=4e00000.dwc3
+
+# OTA assert
+TARGET_OTA_ASSERT_DEVICE := topaz,tapas
 
 # Partitions
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
