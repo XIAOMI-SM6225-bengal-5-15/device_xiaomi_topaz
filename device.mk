@@ -77,7 +77,10 @@ PRODUCT_PACKAGES += \
     init.qti.early_init.sh
 
 PRODUCT_PACKAGES += \
-    init.target.rc
+    init.target.rc \
+    init.xiaomi.fingerprint.rc \
+    init.xiaomi.rc \
+    ueventd.xiaomi.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \

@@ -5,6 +5,27 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "init.xiaomi.fingerprint.rc",
+    src: "init.xiaomi.fingerprint.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.xiaomi.rc",
+    src: "init.xiaomi.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.xiaomi.rc",
+    filename: "ueventd.rc",
+    src: "ueventd.xiaomi.rc",
+    device_specific: true,
+}
+
 sh_binary {
     name: "init.qti.dcvs.sh",
     src: "init.qti.dcvs.sh",
