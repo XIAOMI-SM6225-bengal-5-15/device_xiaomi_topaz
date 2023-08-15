@@ -50,6 +50,10 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/xiaomi_manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/xiaomi_odm_manifest.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_topaz
+TARGET_RECOVERY_DEVICE_MODULES := libinit_topaz
+
 # Kernel
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true

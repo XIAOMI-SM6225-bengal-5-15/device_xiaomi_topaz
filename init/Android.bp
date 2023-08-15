@@ -1,7 +1,25 @@
+cc_library_static {
+    name: "libinit_topaz",
+    recovery_available: true,
+    shared_libs: ["libbase"],
+    srcs: ["init_topaz.cpp"],
+    include_dirs: [
+        "system/core/init",
+        "system/libbase/include"
+    ]
+}
+
 prebuilt_etc {
     name: "init.target.rc",
     src: "init.target.rc",
     sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.topaz.rc",
+    src: "init.topaz.rc",
+    sub_dir: "init",
     vendor: true,
 }
 
