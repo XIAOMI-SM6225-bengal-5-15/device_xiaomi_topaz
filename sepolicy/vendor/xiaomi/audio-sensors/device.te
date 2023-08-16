@@ -1,0 +1,2 @@
+# Sound Device
+type sound_device, dev_type;
