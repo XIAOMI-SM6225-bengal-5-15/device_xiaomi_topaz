@@ -4,6 +4,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
+TARGET_KERNEL_VERSION := 5.15
 
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
@@ -246,6 +247,33 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# QC common
+TARGET_ADRENO_COMPONENT_VARIANT := adreno
+TARGET_GPS_COMPONENT_VARIANT := gps
+TARGET_MEDIA_COMPONENT_VARIANT := media
+TARGET_PERF_COMPONENT_VARIANT := perf
+TARGET_WLAN_COMPONENT_VARIANT := wlan
+TARGET_USE_AIDL_QTI_HEALTH := true
+
+TARGET_COMMON_QTI_COMPONENTS := \
+    adreno \
+    alarm \
+    audio \
+    av \
+    bt \
+    charging \
+    display \
+    gps \
+    init \
+    media \
+    overlay \
+    perf \
+    telephony \
+    usb \
+    vibrator \
+    wfd \
+    wlan
 
 # Radio
 PRODUCT_PRODUCT_PROPERTIES += \
