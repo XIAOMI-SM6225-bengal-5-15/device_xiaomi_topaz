@@ -264,6 +264,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.nfc.port=I2C
 
+# Overlays
+PRODUCT_PACKAGES += \
+    AOSPATopazFrameworksOverlay \
+    TopazCarrierConfigOverlay \
+    TopazFrameworksOverlay \
+    TopazSettingsOverlay \
+    TopazSystemUIOverlay \
+    TopazWifiOverlay
+
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 

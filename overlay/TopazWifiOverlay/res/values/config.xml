@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2020 Qualcomm Technologies, Inc.
+     All Rights Reserved.
+     Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+
+<resources>
+
+    <!-- Array describing scanning schedule in seconds when device is disconnected and screen is on -->
+    <array name="config_wifiDisconnectedScanIntervalScheduleSec">
+        <item>20</item>
+    </array>
+
+    <!-- Boolean indicating that enable roaming between linked networks -->
+    <bool name="config_wifiEnableLinkedNetworkRoaming">false</bool>
+
+    <!-- Indicates that the framework should auto append lower bands to band configuration for
+         avoiding coexistence handling. For example: 5g only band will change to 2.4g|5g and
+         6g band will change to 2.4|5g|6g band -->
+    <bool name="config_wifiSoftapAutoAppendLowerBandsToBandConfigurationEnabled">true</bool>
+
+    <!-- dual sap mode is supported on this device. -->
+    <bool name="config_wifi_dual_sap_mode_enabled">false</bool>
+
+    <!-- Indicates whether or not the WLAN driver supports the NL80211_CMD_REG_CHANGE or
+         NL80211_CMD_WIPHY_REG_CHANGE events which indicate the current country code which is
+         being used by the WLAN driver. If the driver doesn't support these events
+         (configuration is `false`) then the driver must handle the setCountryCode request from
+         HAL as a blocking call. In such a case the country code will be applied
+         immediately after the country code is sent to the driver (if the method returns a
+         success). -->
+    <bool translatable="false" name="config_wifiDriverSupportedNl80211RegChangedEvent">true</bool>
+    
+</resources>
