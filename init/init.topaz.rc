@@ -1,2 +1,17 @@
+on post-fs-data
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+on post-fs
+    start stflashtool
+
+on boot
+    start nfc_hal_service
+
+service stflashtool /vendor/bin/STFlashTool
+    class late_start
+    group nfc
+    user nfc
+    oneshot
+
 on property:ro.boot.hwname=*
     setprop ro.boot.product.hardware.sku ${ro.boot.hwname}

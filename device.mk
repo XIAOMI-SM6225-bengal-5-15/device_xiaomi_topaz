@@ -261,6 +261,19 @@ PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks-V1-ndk.vendor
 
 # NFC
+$(call inherit-product, hardware/st/nfc/nfc_vendor_product.mk)
+TARGET_USES_ST_AIDL_NFC := true
+
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    libchrome.vendor \
+    NfcNci \
+    SecureElement \
+    Tag
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nfc/libnfc-hal-st.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st.conf
+
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.nfc.port=I2C
 
