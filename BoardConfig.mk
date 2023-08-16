@@ -73,6 +73,8 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 
 BOARD_KERNEL_CMDLINE := \
     disable_dma32=on \
+    mtdoops.fingerprint=$(AOSPA_VERSION) \
+    swinfo.fingerprint=$(AOSPA_VERSION)
 
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
