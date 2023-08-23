@@ -39,7 +39,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/modem \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/nfc \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/power \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/power_supply \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/thermald \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/usb \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/vibrator
