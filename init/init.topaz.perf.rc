@@ -10,3 +10,11 @@ on property:vendor.post_boot.parsed=1
     write /proc/sys/walt/input_boost/input_boost_ms 120
     write /proc/sys/walt/input_boost/powerkey_input_boost_freq "1516800 0 0 0 2208000 0 0 0"
     write /proc/sys/walt/input_boost/powerkey_input_boost_ms 400
+
+    # configure governor settings for silver cluster
+    write /sys/devices/system/cpu/cpufreq/policy0/walt/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy0/walt/down_rate_limit_us 20000
+
+    # configure governor settings for gold cluster
+    write /sys/devices/system/cpu/cpufreq/policy4/walt/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy4/walt/down_rate_limit_us 10000
