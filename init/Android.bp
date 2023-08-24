@@ -24,6 +24,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.topaz.perf.rc",
+    src: "init.topaz.perf.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "init.xiaomi.fingerprint.rc",
     src: "init.xiaomi.fingerprint.rc",
     sub_dir: "init",

@@ -1,0 +1,12 @@
+on property:vendor.post_boot.parsed=1
+    # cpuset parameters
+    write /dev/cpuset/background/cpus 0-2
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-2,4-7
+    write /dev/cpuset/foreground/boost/cpus 4-7
+    write /dev/cpuset/top-app/cpus 0-7
+
+    # configure input boost settings
+    write /proc/sys/walt/input_boost/input_boost_ms 120
+    write /proc/sys/walt/input_boost/powerkey_input_boost_freq "1516800 0 0 0 2208000 0 0 0"
+    write /proc/sys/walt/input_boost/powerkey_input_boost_ms 400
