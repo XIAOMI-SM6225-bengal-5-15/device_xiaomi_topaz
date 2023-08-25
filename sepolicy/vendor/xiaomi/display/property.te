@@ -1,0 +1,5 @@
+vendor_public_prop(vendor_displayfeature_prop)
+vendor_internal_prop(vendor_ctl_vendor_display_prop)
+
+# Panel
+vendor_public_prop(vendor_panel_info_prop)

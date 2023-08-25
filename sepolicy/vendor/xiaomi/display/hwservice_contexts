@@ -1,0 +1,2 @@
+# Displayfeature
+vendor.xiaomi.hardware.displayfeature::IDisplayFeature       u:object_r:vendor_hal_displayfeature_xiaomi_hwservice:s0

@@ -1,3 +1,10 @@
+/sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-0051/wakeup u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-0051/wakeup/wakeup u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-006a/power_supply/bbc/wakeup u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-0071/power_supply/bms/wakeup u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-004e/tcpc/type_c_port0/wakeup u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-004e/tcpc/type_c_port0/dual-role-type_c_port0/wakeup u:object_r:sysfs_wakeup:s0
+
 # Label read_ahead_kb in /data partition
 /sys/devices/platform/soc/4804000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/queue/read_ahead_kb u:object_r:vendor_sysfs_scsi_host:s0
 
