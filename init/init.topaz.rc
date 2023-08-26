@@ -1,3 +1,8 @@
+on init
+    # DT2W
+    chown system system /proc/tp_gesture
+    chmod 0644 /proc/tp_gesture
+
 on post-fs-data
     mkdir /data/vendor/nfc 0770 nfc nfc
 
