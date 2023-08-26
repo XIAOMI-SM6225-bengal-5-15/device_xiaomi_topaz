@@ -698,8 +698,10 @@ vendor/lib64/vendor.qti.hardware.factory@1.1.so
 # Fingerprint
 odm/firmware/goodix_cfg_group.bin
 odm/firmware/goodix_firmware.bin
+vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service_lc
 vendor/etc/permissions/com.fingerprints.extension.xml
 vendor/etc/permissions/qti_fingerprint_interface.xml
+vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml
 vendor/framework/com.fingerprints.extension.jar
 vendor/lib64/android.hardware.biometrics.common-V2-ndk.so
 vendor/lib64/android.hardware.biometrics.fingerprint-V2-ndk.so
