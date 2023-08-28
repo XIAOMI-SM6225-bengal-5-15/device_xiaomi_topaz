@@ -79,6 +79,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Bluetooth
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    persist.bluetooth.disableabsvol=true \
     persist.vendor.btstack.aac_frm_ctl.enabled=true \
     persist.sys.btsatck.absvolfeature=true \
     persist.vendor.service.bdroid.soc.alwayson=true \
@@ -86,7 +87,6 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.bluetooth.wipower=false
 
 PRODUCT_VENDOR_PROPERTIES += \
-    persist.bluetooth.disableabsvol=true \
     persist.vendor.qcom.bluetooth.soc=cherokee \
     persist.vendor.qcom.bluetooth.enable.splita2dp=true \
     persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac \
@@ -331,6 +331,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.vendor.ims.no_stapa=1 \
     persist.vendor.radio.enable_temp_dds=true \
+    rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
     ro.vendor.radio.features_common=3 \
     ro.vendor.radio.fastdormancy=true
 
@@ -342,8 +343,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.radio.snapshot_timer=5 \
     persist.vendor.radio.manual_nw_rej_ct=1 \
     persist.vendor.radio.atfwd.start=true \
-    persist.vendor.rcs.singlereg.feature=1 \
-    rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
+    persist.vendor.rcs.singlereg.feature=1
 
 # Rootdir / Init script files
 PRODUCT_PACKAGES += \
@@ -403,7 +403,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.sys.thermal.data.path=/data/vendor/thermal/
 
 # Time-services
-PRODUCT_VENDOR_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     persist.timed.enable=true
 
 # Treble
