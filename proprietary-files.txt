@@ -556,6 +556,9 @@ vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so
 
 # Consumer IR
 vendor/bin/consumerird
+vendor/bin/hw/android.hardware.ir-service.example
+vendor/etc/init/android.hardware.ir-service.example.rc
+vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml
 vendor/lib64/hw/consumerir.qcom.so
 
 # Diaghal
