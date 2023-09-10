@@ -1362,6 +1362,9 @@ vendor/etc/init/init_thermal-engine-v2.rc
 vendor/lib64/liblmthermallistner.so
 vendor/lib64/libthermalclient.so
 
+# Thermal Configs - patched
+vendor/etc/thermal-normal.conf|d44ba836677e9e04d67040ced60ef7abe56f7aae
+
 # Thermal Configs
 vendor/etc/thermal-camera.conf
 vendor/etc/thermal-chg-only.conf
@@ -1370,7 +1373,6 @@ vendor/etc/thermal-engine.conf
 vendor/etc/thermal-map.conf
 vendor/etc/thermal-navigation.conf
 vendor/etc/thermal-nolimits.conf
-vendor/etc/thermal-normal.conf
 vendor/etc/thermal-phone.conf
 vendor/etc/thermal-tgame.conf
 vendor/etc/thermal-video.conf
