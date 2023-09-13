@@ -7,8 +7,6 @@ on fs
 on post-fs-data
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
-    chown system system /sys/class/mi_display/disp-DSI-0/mipi_rw
-    chmod 664 /sys/class/mi_display/disp-DSI-0/mipi_rw
     chown system system /sys/class/power_supply/wireless/reverse_chg_mode
     chown system system /sys/class/power_supply/wireless/bt_state
     chown system system /sys/class/power_supply/wireless/rx_cr
@@ -69,16 +67,6 @@ on post-fs-data
     mkdir /data/tombstones/modem 0771 system system encryption=Require
 
 on boot
-#Display
-    chown system system /sys/class/mi_display/disp-DSI-0/disp_param
-    chmod 0664 /sys/class/mi_display/disp-DSI-0/disp_param
-    chown system system /sys/class/mi_display/disp-DSI-0/mipi_rw
-    chmod 0664 /sys/class/mi_display/disp-DSI-0/mipi_rw
-    chown system system /sys/class/mi_display/disp-DSI-0/panel_info
-    chmod 0444 /sys/class/mi_display/disp-DSI-0/panel_info
-    chown system system /sys/class/mi_display/disp-DSI-0/doze_brightness
-    chown system system /sys/devices/virtual/graphics/fb0/hist_event
-
 #Start mi_thermald
     start mi_thermald
 

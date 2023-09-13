@@ -1,4 +1,0 @@
-allow hal_fingerprint_default vendor_sysfs_displayfeature:dir search;
-allow hal_fingerprint_default vendor_sysfs_displayfeature:file rw_file_perms;
-
-get_prop(hal_fingerprint_default, vendor_panel_info_prop)

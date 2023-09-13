@@ -1,2 +1,0 @@
-allow vendor_hal_perf_default vendor_hal_displayfeature_xiaomi_default:dir search;
-allow vendor_hal_perf_default vendor_hal_displayfeature_xiaomi_default:file read;

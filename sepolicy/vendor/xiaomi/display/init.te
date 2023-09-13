@@ -1,2 +1,1 @@
 allow init vendor_sysfs_graphics:file mounton;
-set_prop(vendor_init, vendor_displayfeature_prop)
