@@ -85,12 +85,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Bluetooth
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    persist.bluetooth.disableabsvol=true \
-    persist.vendor.btstack.aac_frm_ctl.enabled=true \
-    persist.sys.btsatck.absvolfeature=true \
-    persist.vendor.service.bdroid.soc.alwayson=true \
-    ro.bluetooth.emb_wp_mode=false \
-    ro.bluetooth.wipower=false
+    persist.vendor.service.bdroid.soc.alwayson=true
 
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.qcom.bluetooth.soc=cherokee \
