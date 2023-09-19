@@ -205,10 +205,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.fuse.passthrough.enable=true
 
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss-V2-ndk.vendor
-
 # IDC
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/idc/,$(TARGET_COPY_OUT_VENDOR)/usr/idc)
